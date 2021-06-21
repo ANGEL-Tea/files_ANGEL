@@ -3,11 +3,11 @@ local text = msg.content_.text_
 if ChatType == 'sp' or ChatType == 'gp'  then
 if Manager(msg) then
 if text == "all" or text == "@all" or text == "#all" then
-if DevRio:get(ANGEL.."Rio:TagAll:Time"..msg.chat_id_..':'..msg.sender_user_id_) then  
+if database:get(ANGEL.."database:TagAll:Time"..msg.chat_id_..':'..msg.sender_user_id_) then  
 Dev_Rio(msg.chat_id_, msg.id_, 1, '⌁︙انتظر دقيقه بعد ارسال الامر', 1, 'md')
 return false  
 end
-DevRio:setex(ANGEL..'Rio:TagAll:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
+database:setex(ANGEL..'Rio:TagAll:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
 tdcli_function({ID="GetChannelFull",channel_id_ = msg.chat_id_:gsub('-100','')},function(arg,data) 
 tdcli_function({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub('-100',''), offset_ = 0,limit_ = data.member_count_},function(arg,dp)
 x = 0
